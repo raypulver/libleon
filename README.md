@@ -68,6 +68,8 @@ switch (val.type) {
   case LEON_NULL:
   case LEON_UNDEFINED:
   case LEON_NAN:
+  case LEON_POSITIVE_INFINITY:
+  case LEON_MINUS_INFINITY:
     // no conversion
     break;
 ```

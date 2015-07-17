@@ -122,6 +122,15 @@ void Encoder::writeValueWithSpec(Value& v, unsigned char t) {
         throw DateException();
       case LEON_BUFFER:
         throw BufferException();
+      case LEON_UNDEFINED:
+        throw UndefinedException();
+      case LEON_NAN:
+        throw NaNException();
+      case LEON_NULL:
+        throw NullException();
+      case LEON_POSITIVE_INFINITY:
+      case LEON_MINUS_INFINITY:
+        throw InfinityException();
     }
   }
   writeValue(v, t, true);
@@ -170,7 +179,7 @@ unsigned int Encoder::writeValue(Value& v, unsigned char type, bool implicit) {
     else type = LEON_FALSE;
   }
   typeByte.writeUInt8(type, 0);
-  if (type == LEON_UNDEFINED || type == LEON_TRUE || type == LEON_FALSE || type == LEON_NULL || type == LEON_NAN) {
+  if (type == LEON_UNDEFINED || type == LEON_TRUE || type == LEON_FALSE || type == LEON_NULL || type == LEON_NAN || type == LEON_MINUS_INFINITY || type == LEON_POSITIVE_INFINITY) {
     append(typeByte);
     return 1;
   }

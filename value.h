@@ -24,6 +24,9 @@ namespace LEON {
     static Value Buffer(const char*);
     static Value RegExp(std::string);
     static Value Date(unsigned int);
+    static Value MinusInfinity();
+    static Value Infinity();
+    static Value Undefined();
     Value();
     Value(unsigned char);
     Value(char);

@@ -148,6 +148,10 @@ Value Parser::parseValue(const unsigned char t) {
     return Value::Null();
   } else if (t == LEON_NAN) {
     return Value::NaN();
+  } else if (t == LEON_POSITIVE_INFINITY) {
+    return Value::Infinity();
+  } else if (t == LEON_MINUS_INFINITY) {
+    return Value::MinusInfinity();
   } else if (t == LEON_DATE) {
     Value ret = buffer.readValue(LEON_UNSIGNED_INT);
     ret.type = LEON_DATE;

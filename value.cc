@@ -84,9 +84,24 @@ Value Value::NaN() {
   ret.type = LEON_NAN;
   return ret;
 }
+Value Value::Undefined() {
+  Value ret;
+  ret.type = LEON_UNDEFINED;
+  return ret;
+}
 Value Value::Buffer(const char* v) {
   Value ret(v);
   ret.type = LEON_BUFFER;
+  return ret;
+}
+Value Value::Infinity() {
+  Value ret;
+  ret.type = LEON_POSITIVE_INFINITY;
+  return ret;
+}
+Value Value::MinusInfinity() {
+  Value ret;
+  ret.type = LEON_MINUS_INFINITY;
   return ret;
 }
 string Value::toString() {

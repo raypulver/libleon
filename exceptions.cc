@@ -70,3 +70,15 @@ const char* DateException::what() const throw() {
 const char* BufferException::what() const throw() {
   return "Value is not a Buffer.";
 }
+const char* InfinityException::what() const throw() {
+  return "Value is not Infinity.";
+}
+const char* NullException::what() const throw() {
+  return "Value is not null.";
+}
+const char* UndefinedException::what() const throw() {
+  return "Value is not undefined.";
+}
+const char* NaNException::what() const throw() {
+  return "Value is not NaN.";
+}

@@ -21,6 +21,8 @@
 #define LEON_BUFFER '\26'
 #define LEON_REGEXP '\27'
 #define LEON_NAN '\30'
+#define LEON_POSITIVE_INFINITY '\31'
+#define LEON_MINUS_INFINITY '\32'
 #define LEON_EMPTY '\377'
 
 #endif

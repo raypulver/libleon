@@ -92,4 +92,20 @@ class BufferException : public TypeException {
   virtual const char* what() const throw();
 };
 
+class NaNException : public TypeException {
+  virtual const char* what() const throw();
+};
+
+class NullException : public TypeException {
+  virtual const char* what() const throw();
+};
+
+class InfinityException : public TypeException {
+  virtual const char* what() const throw();
+};
+
+class UndefinedException : public TypeException {
+  virtual const char* what() const throw();
+};
+
 #endif
