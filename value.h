@@ -18,11 +18,15 @@ namespace LEON {
     std::map<std::string, Value> obj;
     std::vector<Value> arr;
     std::string str;
+    std::string pattern;
+    std::string modifier;
     static Value NaN();
     static Value Null();
     static Value RegExp(const char*);
+    static Value RegExp(const char*, const char*);
     static Value Buffer(const char*);
     static Value RegExp(std::string);
+    static Value RegExp(std::string, std::string);
     static Value Date(unsigned int);
     static Value MinusInfinity();
     static Value Infinity();

@@ -157,7 +157,7 @@ Value Parser::parseValue(const unsigned char t) {
     ret.type = LEON_DATE;
     return ret;
   } else if (t == LEON_REGEXP) {
-    return Value::RegExp(readString());
+    return Value::RegExp(readString(), readString());
   } else if (t == LEON_BUFFER) {
     Value lenVal = buffer.readValue(buffer.readUInt8());
     unsigned int len = lenVal.toUnsignedInt();

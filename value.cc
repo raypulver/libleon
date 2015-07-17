@@ -59,7 +59,11 @@ Value::Value(string v, unsigned char t) : str(v), type(t) {
   str = v;
   if (t == LEON_REGEXP) {
     type = LEON_REGEXP;
-  } else type = LEON_STRING;
+    pattern = v;
+  } else {
+    type = LEON_STRING;
+    str = v;
+  }
 }
 Value::Value(const char* v) : Value(string(v)) {}
 Value::Value(const char* v, unsigned char t) : Value(string(v), t) {}
@@ -70,6 +74,16 @@ Value Value::RegExp(const char* v) {
 }
 Value Value::RegExp(string v) {
   return Value(v, LEON_REGEXP);
+}
+Value Value::RegExp(const char* p, const char* m) {
+  Value ret(p, LEON_REGEXP);
+  ret.modifier = string(m);
+  return ret;
+}
+Value Value::RegExp(string p, string m) {
+  Value ret(p, LEON_REGEXP);
+  ret.modifier = m;
+  return ret;
 }
 Value Value::Date(unsigned int v) {
   return Value(v, LEON_DATE);
@@ -106,6 +120,7 @@ Value Value::MinusInfinity() {
 }
 string Value::toString() {
   if (type != LEON_STRING && type != LEON_REGEXP && type != LEON_BUFFER) throw StringException();
+  if (type == LEON_REGEXP) return string("/") + pattern + string("/") + modifier;
   return str;
 }
 unsigned char Value::toUnsignedChar() {
@@ -169,6 +184,8 @@ void Value::reset() {
   arr.clear();
   obj.clear();
   str = "";
+  pattern = "";
+  modifier = "";
   num.i = 0;
 }
 void Value::set(unsigned char v) {

@@ -266,9 +266,9 @@ unsigned int Encoder::writeValue(Value& v, unsigned char type, bool implicit) {
     return count;
   }
   if (type == LEON_REGEXP) {
-    string reg = v.toString();
-    writeString(reg);
-    return count + reg.size();
+    writeString(v.pattern);
+    writeString(v.modifier);
+    return count + v.pattern.size() + v.modifier.size() + 2;
   }
   if (type == LEON_DATE) {
     v.type = LEON_UNSIGNED_INT;
