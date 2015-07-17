@@ -73,7 +73,7 @@ switch (val.type) {
     // no conversion
     break;
 ```
-If you want to serialize `null` or `NaN`, you can get a `LEON::Value` of that type by calling `LEON::Value::Null()` or `LEON::Value::NaN()`. If you want `undefined` you can simply construct `LEON::Value` with no arguments. Other special values are a `Date` which can be constructed by passing a timestamp to `LEON::Value::Date(unsigned int)`, a `RegExp` which can be constructed by passing its string representation to `LEON::Value::RegExp(std::string)`, and a `Buffer` object which can be constructed by passing an `unsigned char` array to `LEON::Value::Buffer(const unsigned char*)`.
+If you want to serialize `null` or `NaN`, you can get a `LEON::Value` of that type by calling `LEON::Value::Null()` or `LEON::Value::NaN()`. If you want `undefined` you can simply construct `LEON::Value` with no arguments, or alternatively call `LEON::Value::Undefined()`. If you want positive infinity you can call `LEON::Value::Infinity()` and minus infinity is `LEON::Value::MinusInfinity()`. Other special values are a `Date` which can be constructed by passing a timestamp to `LEON::Value::Date(unsigned int)`, a `RegExp` which can be constructed by passing its string representation to `LEON::Value::RegExp(std::string)`, and a `Buffer` object which can be constructed by passing an `unsigned char` array to `LEON::Value::Buffer(const unsigned char*)`.
 
 Just like in the JavaScript implementation, you can construct a `LEON::Channel` by passing a `LEON::Value` to its constructor that is a template of the data to be sent. The same rules apply as in the JavaScript version, i.e. an array must consist of the same type, and if the values are objects they must have the same keys and associated values. An example:
 
