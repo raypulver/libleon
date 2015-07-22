@@ -16,9 +16,10 @@ Parser::Parser(const std::string s, const Value& v) : hasSpec(true), buffer(Buff
 string Parser::readString() {
   string ret;
   unsigned char c;
-  for (;;) {
+  Value lenVal = buffer.readValue(buffer.readUInt8());
+  unsigned int len = lenVal.toUnsignedInt();
+  for (unsigned i = 0; i < len; ++i) {
     c = buffer.readUInt8();
-    if (c == 0) break;
     ret += c;
   }
   return ret;

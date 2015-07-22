@@ -285,12 +285,12 @@ unsigned int Encoder::writeValue(Value& v, unsigned char type, bool implicit) {
   }
 }
 void Encoder::writeString(string str, bool inIndex, bool term) {
-  StringBuffer add;
+  Value v (str.size());
+  writeValue(v, numeric_type_check(str.size()));
   for (char c : str) {
-    add.writeUInt8(c, -1);
+    Value v (c);
+    writeValue(v, LEON_UNSIGNED_CHAR, true);
   }
-  if (term) add.writeUInt8(0, -1);
-  append(add);
 }
 void Encoder::writeString(string str) {
   writeString(str, false, true);
